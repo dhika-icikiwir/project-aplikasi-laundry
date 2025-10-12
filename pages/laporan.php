@@ -168,7 +168,7 @@ $no = 1;
         <div class="container mx-auto px-4 py-6 text-center border-t border-gray-200 print:border-t-2 print:border-black print:py-4">
             <hr class="my-4 border-gray-300 print:border-black">
             <p class="text-gray-500 text-sm print:text-black print:font-semibold">Dicetak pada: <?= date('d/m/Y H:i:s'); ?></p>
-            <p class="text-gray-500 text-sm mt-2 print:text-black">&copy; 2023 Aplikasi Laundry. Dibuat untuk tugas sekolah dengan cinta ❤️.</p>
+            <p class="text-gray-500 text-sm mt-2 print:text-black">&copy; 2025 Aplikasi Laundry. Dibuat untuk tugas sekolah SMK HIKMAH YAPIS.</p>
         </div>
     </footer>
 </body>

@@ -124,7 +124,7 @@ $data = mysqli_query($conn, $sql);
     <!-- Footer -->
     <footer class="bg-white shadow-lg mt-auto">
         <div class="container mx-auto px-4 py-6 text-center">
-            <p class="text-gray-500 text-sm">&copy; 2023 Aplikasi Laundry. Dibuat untuk tugas sekolah dengan cinta ❤️.</p>
+            <p class="text-gray-500 text-sm">&copy; 2025 Aplikasi Laundry. Dibuat untuk tugas sekolah SMK HIKMAH YAPIS.</p>
         </div>
     </footer>
 </body>
