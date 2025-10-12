@@ -3,6 +3,6 @@ include "../includes/database.php";
 $id = $_GET['id'];
 
 
-mysqli_query($conn, "DELETE FROM penjualan WHERE id_transaksi='$id'");
+mysqli_query($conn, "DELETE FROM penjualan WHERE id_penjualan='$id'");
 
 header('Location: penjualan_daftar.php');

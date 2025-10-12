@@ -7,11 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // PERBAIKAN: Menggunakan operator ternary untuk mengambil NILAI jika diset, 
     //            dan string kosong jika TIDAK diset.
-    $id_pelanggan = isset($_POST['id_pelanggan']) ? $_POST['id_pelanggan'] : '';
     $nomor_hp = isset($_POST['no_hp_pelanggan']) ? $_POST['no_hp_pelanggan'] : '';
     $tanggal_masuk = isset($_POST['tgl_masuk']) ? $_POST['tgl_masuk'] : '';
     $layanan_form = isset($_POST['layanan']) ? $_POST['layanan'] : '';
-
     $berat_kg = isset($_POST['jumlah']) ? (int)$_POST['jumlah'] : 0;
     $status = isset($_POST['status_pesanan']) ? $_POST['status_pesanan'] : 'Masuk Antrean';
 
@@ -36,31 +34,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $total_harga = $berat_kg * $harga_per_layanan;
 
-    // ... (QUERY INSERT dan EKSEKUSI sama)
+    // ... (QUERY INSERT)
     $sql = "INSERT INTO `penjualan` (
-                `id_pelanggan`, `nomor_hp`, `tanggal_masuk`, `tanggal_ambil`, 
+                `nomor_hp`, `tanggal_masuk`, `tanggal_ambil`, 
                 `total_harga`, `status`, `layanan`
             ) VALUES (
-                '$id_pelanggan', '$nomor_hp', '$tanggal_masuk', $tanggal_ambil,
+                '$nomor_hp', '$tanggal_masuk', $tanggal_ambil,
                 '$total_harga', '$status', '$layanan_sql'
             )";
 
     if (mysqli_query($conn, $sql)) {
-        // SUKSES: Alihkan ke halaman daftar
         header("Location: penjualan_daftar.php");
         exit;
     } else {
-        // GAGAL: Alihkan kembali ke halaman form
-        // Catatan: Jika ini adalah halaman form itu sendiri, Anda akan mengalami redirect loop
-        // KECUALI Anda mencetak pesan error di sini.
-        // SOLUSI TERBAIK: Cukup tampilkan error, jangan redirect.
         echo "Error: Gagal menyimpan data penjualan.<br>" . mysqli_error($conn);
         exit;
     }
 }
-// Bagian HTML di bawah ini akan ditampilkan jika halaman diakses secara LANGSUNG (bukan melalui POST).
 
-// ... (sisa kode HTML)
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -114,16 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Form Section -->
             <section class="bg-white p-8 rounded-xl shadow-lg">
                 <form action="penjualan_baru.php" method="POST" class="space-y-6">
-                    <!-- ID Pelanggan -->
-                    <div>
-                        <label for="id_pelanggan" class="block text-sm font-semibold text-gray-700 mb-2">
-                            ID Pelanggan
-                        </label>
-                        <input type="text" id="id_pelanggan" name="id_pelanggan" 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300" 
-                               placeholder="Masukkan ID pelanggan" required>
-                    </div>
-
                     <!-- Nomor HP Pelanggan -->
                     <div>
                         <label for="no_hp_pelanggan" class="block text-sm font-semibold text-gray-700 mb-2">

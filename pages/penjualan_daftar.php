@@ -87,11 +87,11 @@ $data = mysqli_query($conn, $sql);
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= ucfirst($d['layanan']); ?></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                        <a href="edit.php?id=<?= $d['id_transaksi']; ?>" 
+                                        <a href="proses_edit.php?id=<?= $d['id_penjualan']; ?>" 
                                            class="text-blue-600 hover:text-blue-900 font-semibold transition-colors duration-200">
                                             Edit
                                         </a>
-                                        <a href="proses_delete.php?id=<?= $d['id_transaksi']; ?>" 
+                                        <a href="proses_delete.php?id=<?= $d['id_penjualan']; ?>" 
                                            class="text-red-600 hover:text-red-900 font-semibold transition-colors duration-200"
                                            onclick="return confirm('Yakin ingin menghapus data ini?')">
                                             Delete
