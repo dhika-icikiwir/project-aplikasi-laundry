@@ -3,8 +3,7 @@
 
 include '../includes/database.php';
 
-
-// Jika form dikirim (method POST)
+// QUERY INSERT
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_penjualan = $_POST['id_penjualan'];
     $nomor_hp = $_POST['no_hp_pelanggan'];
@@ -31,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $total_harga = $berat_kg * $harga_per_layanan;
 
+
+// QUERY UPDATE
     $sql = "UPDATE penjualan 
             SET nomor_hp='$nomor_hp',
                 tanggal_masuk='$tanggal_masuk',
@@ -49,16 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-// Ambil ID dari URL
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-if ($id <= 0) {
-    echo "Error: ID tidak valid.";
-    header("Location: penjualan_daftar.php");
-    exit;
-}
-
-// Query untuk ambil data berdasarkan ID (asumsi primary key: id_penjualan)
+// QUERY SELECT
+$id = $_GET['id'];
 $sql = "SELECT * FROM penjualan WHERE id_penjualan = $id";
 $result = mysqli_query($conn, $sql);
 
@@ -67,7 +61,6 @@ if (mysqli_num_rows($result) == 0) {
     header("Location: penjualan_daftar.php");
     exit;
 }
-
 $row = mysqli_fetch_array($result);
 
 // Mapping layanan dari DB ke value form dan hitung berat (kg) dari total_harga
